@@ -7,24 +7,23 @@ from jinja2 import Template
 #
 # Recipient emails or domains in the AWS Email Sandbox must be verified
 # You'll want to change this to the email you verify in SES
-FROM_ADDRESS='thewoofgardenstaff@gmail.com'
-REPLY_TO_ADDRESS='thewoofgardenstaff@gmail.com'
+FROM_ADDRESS='scott@aftercamp.io'
+REPLY_TO_ADDRESS='scott@aftercamp.io'
 
 # You'll also need to change these to email addresses you verify in AWS
 CLIENTS = [
     # Format: [email, 'first name', 'last name', 'pet name']
-    ['zoe.on.the.firefly@outlook.com', 'Zoe', 'Washburne', 'Firefly II'],
-    ['pluralsight.fernando@gmail.com', 'Fernando', 'Medina Corey', 'Riley']                
+    ['scottbromander@gmail.com', 'Scott', 'Bromander', 'Baxter']             
 ]
 
 EMPLOYEES = [
     # Content stored in this order: [email, first_name, last_name]
     # Change to any email you verify in SES
-    ['springfield.homer@yahoo.com', 'Homer', 'Simpson']
+    ['scott@primeacademy.io', 'Scott', 'Prime']
 ]
 
 # Change to the bucket you create on your AWS account
-TEMPLATE_S3_BUCKET = 'woof-garden-templates'
+TEMPLATE_S3_BUCKET = 'whatever-bucket-name'
 #
 #
 # End of things you need to change

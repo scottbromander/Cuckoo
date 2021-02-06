@@ -7,13 +7,13 @@ from jinja2 import Template
 #
 # Recipient emails or domains in the AWS Email Sandbox must be verified
 # You'll want to change this to the email you verify in SES
-FROM_ADDRESS='scott@aftercamp.io'
-REPLY_TO_ADDRESS='scott@aftercamp.io'
+FROM_ADDRESS="scott@aftercamp.io"
+REPLY_TO_ADDRESS="scott@aftercamp.io"
 
 # You'll also need to change these to email addresses you verify in AWS
 CLIENTS = [
     # Format: [email, 'first name', 'last name', 'pet name']
-    ['scottbromander@gmail.com', 'Scott', 'Bromander', 'Baxter']             
+    ["scottbromander@gmail.com", "Scott", "Bromander", "Baxter"]             
 ]
 
 EMPLOYEES = [
@@ -23,19 +23,23 @@ EMPLOYEES = [
 ]
 
 # Change to the bucket you create on your AWS account
-TEMPLATE_S3_BUCKET = 'whatever-bucket-name'
+TEMPLATE_S3_BUCKET = "whatever-bucket-name"
 #
 #
 # End of things you need to change
 
 def get_template_from_s3(key):
     """Loads and returns html template from Amazon S3"""
-    s3 = boto3.client('s3')
+    print(key)
+    print(TEMPLATE_S3_BUCKET)
+    s3 = boto3.client("s3")
+    print(s3)
     s3_file = s3.get_object(Bucket = TEMPLATE_S3_BUCKET, Key = key)
+    print(s3_file)
     try:
-        template = Template(s3_file['Body'].read())
+        template = Template(s3_file["Body"].read())
     except Exception as e:
-        print('Failed to load template')
+        print("Failed to load template")
         raise e
     return template
 
